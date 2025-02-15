@@ -12,7 +12,7 @@ import { suggestionRoute } from "./routes/suggestion.route.js";
 export const app = express();
 
 const corsOptions = {
-  origin: ["https://your-frontend.com"],
+  origin: ["https://pastpaper-926z.onrender.com"],
   methods: "GET,POST,PUT,DELETE,PATCH",
   credentials: true,
 };
