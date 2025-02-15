@@ -28,7 +28,7 @@ function Home() {
   } = useFolder(folderId);
 
   const [viewMode, setViewMode] = useState(
-    () => localStorage.getItem("viewMode") || "grid"
+    () => localStorage.getItem("viewMode") || "list"
   );
 
   // save viewMode to local storage whenever it changes
