@@ -1,0 +1,20 @@
+.formContainer {
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  width: 100%;
+  transition: box-shadow 0.4s ease;
+}
+
+.formContainer:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.passwordToggle {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 5;
+}

@@ -1,0 +1,53 @@
+.folderContainer:hover {
+  transform: scale(1.05);
+  background-color: #aaadad;
+}
+
+.listViewDiv {
+  width: 100%;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #e3e1e1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gridViewDiv {
+  min-width: 120px;
+  max-width: 250px;
+  display: flex;
+  justify-content: center;
+  background-color: #e3e1e1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.listViewFileName {
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.gridViewFileName {
+  width: 95%;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.menuContainer {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+}
+
+.customTop6px {
+  top: 6px;
+}
+
+.customRight4px {
+  right: -4px;
+}

@@ -1,0 +1,55 @@
+.listView {
+  height: 70px;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gridView {
+  height: 180px;
+  width: 200px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fileName {
+  width: 90%;
+  font-size: 1rem;
+}
+
+.truncateTwoLines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limits text to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.listOptionsButton {
+  top: 17px;
+  right: -1px;
+  padding: 3px;
+}
+
+.gridOptionsButton {
+  top: -4px;
+  right: -11px;
+}
+
+.menuContainer {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1050;
+}
+
+.fileContainer:hover {
+  transform: scale(1.05);
+}

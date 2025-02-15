@@ -1,0 +1,14 @@
+.wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.suggestionList,
+.suggestionForm {
+  min-height: 35rem;
+}
+
+.suggestionList {
+  max-height: 35rem;
+  overflow-y: auto;
+}
