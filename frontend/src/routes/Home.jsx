@@ -11,6 +11,7 @@ import FileView from "../components/FileView";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Nofile from "../components/NoFile";
 import PopupMessage from "../components/PopupMessage";
+import TrackVisitor from "../components/TrackVisitor";
 
 function Home() {
   const { folderId } = useParams();
@@ -39,6 +40,7 @@ function Home() {
   return (
     <main className="container">
       <PopupMessage />
+      <TrackVisitor />
       <div className="d-flex align-items-center pt-2 gap-3">
         <FolderBreadcrumbs currentFolder={folder} />
         <AddFolder currentFolder={folder} addChildFolder={addChildFolder} />
