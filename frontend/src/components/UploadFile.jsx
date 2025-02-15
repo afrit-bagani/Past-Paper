@@ -3,6 +3,7 @@ import { FiUpload } from "react-icons/fi";
 import { ROOT_FOLDER } from "../hooks/useFolder";
 import LoadingSpinner from "./LoadingSpinner";
 import NotificationToast from "./NotificationToast";
+import { BACKEND_URL } from "../config";
 
 function UploadFile({ currentFolder, addChildFile }) {
   const [isFileUploading, setIsFileUploading] = useState(false);
@@ -37,7 +38,7 @@ function UploadFile({ currentFolder, addChildFile }) {
 
     try {
       setIsFileUploading(true);
-      const res = await fetch("/api/files/upload", {
+      const res = await fetch(`${BACKEND_URL}/files/upload`, {
         method: "POST",
         body: formData,
       });

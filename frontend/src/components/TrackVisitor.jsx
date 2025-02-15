@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { getCookie } from "../helper/getCookie";
+import { BACKEND_URL } from "../config";
 
 function TrackVisitor() {
   const hasRequestSend = useRef(false);
@@ -21,7 +22,7 @@ function TrackVisitor() {
           referrer: document.referrer || "Direct",
         };
         try {
-          const res = await fetch("/api/visitor/new-visitor", {
+          const res = await fetch(`${BACKEND_URL}/visitor/new-visitor`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(visitorData),

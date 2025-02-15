@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import NotificationToast from "../components/NotificationToast";
+import { BACKEND_URL } from "../config";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -15,7 +16,7 @@ function UserList() {
   // fetch all users
   useEffect(() => {
     (async function getAllUsers() {
-      const res = await fetch("/api/users");
+      const res = await fetch(`${BACKEND_URL}/users`);
       const data = await res.json();
       setUsers(data.users);
     })();
@@ -24,7 +25,7 @@ function UserList() {
   // promte user to moderartor
   const promoteUser = async (userId) => {
     try {
-      const res = await fetch(`/api/users/approve/${userId}`, {
+      const res = await fetch(`${BACKEND_URL}/users/approve/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
       });
@@ -47,7 +48,7 @@ function UserList() {
   // demote moderator to user
   const demoteUser = async (userId) => {
     try {
-      const res = await fetch(`/api/users/disapprove/${userId}`, {
+      const res = await fetch(`${BACKEND_URL}/users/disapprove/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
       });

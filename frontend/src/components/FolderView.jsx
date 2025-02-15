@@ -7,6 +7,7 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import NotificationToast from "../components/NotificationToast";
 import styles from "../css/FolderView.module.css";
+import { BACKEND_URL } from "../config";
 
 function FolderView({
   childFolders,
@@ -58,11 +59,14 @@ function FolderView({
     }
     try {
       setIsFetching(true);
-      const res = await fetch(`/api/folders/rename/${currentFolder._id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ newFolderName: newFolderName.trim() }),
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/folders/rename/${currentFolder._id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ newFolderName: newFolderName.trim() }),
+        }
+      );
       setIsFetching(false);
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -87,9 +91,12 @@ function FolderView({
   const handleDeleteSubmit = async () => {
     try {
       setIsFetching(true);
-      const res = await fetch(`/api/folders/delete/${currentFolder._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/folders/delete/${currentFolder._id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       setIsFetching(false);
       if (!res.ok || !data.success) {

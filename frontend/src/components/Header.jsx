@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { VscGithub } from "react-icons/vsc";
-import { BASE_URL } from "../config";
+import { BACKEND_URL, FRONTEND_URL } from "../config";
 
 function Header() {
   const [departments, setDepartments] = useState([]);
@@ -10,7 +10,7 @@ function Header() {
   useEffect(() => {
     (async function fetchDept() {
       try {
-        const res = await fetch("/api/folders?parentId=null");
+        const res = await fetch(`${BACKEND_URL}/folders?parentId=null`);
         const data = await res.json();
         setDepartments(data.folders);
       } catch (error) {
@@ -89,13 +89,16 @@ function Header() {
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link to="" className="btn btn-primary me-2">
+              <Link
+                to="https://github.com/afrit-bagani/Past-Paper"
+                className="btn btn-primary me-2"
+              >
                 <VscGithub size={30} />
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                to={`${BASE_URL}/login`}
+                to={`${FRONTEND_URL}/login`}
                 className={`btn btn-dark ${isActive("login")}`}
               >
                 Login

@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { FaFolderPlus } from "react-icons/fa6";
 import { ROOT_FOLDER } from "../hooks/useFolder";
 import NotificationToast from "./NotificationToast";
+import { BACKEND_URL } from "../config";
 
 function AddFolder({ currentFolder, addChildFolder }) {
   const folderNameElement = useRef();
@@ -41,7 +42,7 @@ function AddFolder({ currentFolder, addChildFolder }) {
     }
     try {
       setIsFetching(true);
-      const res = await fetch("/api/folders/create", {
+      const res = await fetch(`${BACKEND_URL}/folders/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

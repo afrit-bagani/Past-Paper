@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { BASE_URL } from "../config";
+import { BACKEND_URL, FRONTEND_URL } from "../config";
 import NotificationToast from "../components/NotificationToast";
 import styles from "../css/Login.module.css";
 
@@ -12,8 +12,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [toastData, setToastData] = useState(null);
   const [isLoging, setIsLoging] = useState(false);
-
-  console.log(BASE_URL);
 
   const showToast = (message, variant) => {
     setToastData({ message, variant });
@@ -31,7 +29,7 @@ const Login = () => {
     (async function logInAccount() {
       try {
         setIsLoging(true);
-        const res = await fetch("/api/auth/login", {
+        const res = await fetch(`${BACKEND_URL}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
@@ -142,7 +140,7 @@ const Login = () => {
           <p className="text-center mt-3 text-muted">
             Don't have an account?{" "}
             <Link
-              to={`${BASE_URL}/register`}
+              to={`${FRONTEND_URL}/register`}
               className="text-primary fw-semibold"
             >
               Register

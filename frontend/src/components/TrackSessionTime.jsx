@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BACKEND_URL } from "../config";
 
 function TrackSessionTime() {
   useEffect(() => {
@@ -11,7 +12,7 @@ function TrackSessionTime() {
       const sessionDuration = Math.floor((endTime - startTime) / 1000);
 
       const visitorId = localStorage.getItem("visitorId");
-      await fetch("/api/visitor/session-time", {
+      await fetch(`${BACKEND_URL}/visitor/session-time`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

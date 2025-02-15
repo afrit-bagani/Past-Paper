@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
-import { BASE_URL } from "../config";
+import { BACKEND_URL, FRONTEND_URL } from "../config";
 import NotificationToast from "../components/NotificationToast";
 import styles from "../css/Register.module.css";
 
@@ -31,7 +31,7 @@ const Register = () => {
     (async function createAccount() {
       try {
         setIsRegistering(true);
-        const res = await fetch("/api/auth/register", {
+        const res = await fetch(`${BACKEND_URL}/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password, name }),
@@ -160,7 +160,10 @@ const Register = () => {
           </form>
           <p className="text-center mt-3 text-muted">
             Already have an account?{" "}
-            <Link to={`${BASE_URL}/login`} className="text-primary fw-semibold">
+            <Link
+              to={`${FRONTEND_URL}/login`}
+              className="text-primary fw-semibold"
+            >
               Log In
             </Link>
           </p>

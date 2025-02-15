@@ -5,6 +5,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import NotificationToast from "../components/NotificationToast";
 import LoadingSpinner from "../components/LoadingSpinner";
 import styles from "../css/Suggestion.module.css";
+import { BACKEND_URL } from "../config";
 
 function Suggestion() {
   const nameRef = useRef();
@@ -26,7 +27,7 @@ function Suggestion() {
     (async function fetchSuggestions() {
       try {
         setIsFetching(true);
-        const res = await fetch("/api/suggestions");
+        const res = await fetch(`${BACKEND_URL}/suggestions`);
         setIsFetching(false);
         const data = await res.json();
         setSuggestion(data.suggestions);
@@ -53,7 +54,7 @@ function Suggestion() {
 
     try {
       setIsSubmitting(true);
-      const res = await fetch("/api/suggestions", {
+      const res = await fetch(`${BACKEND_URL}suggestions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phoneNo, description }),
@@ -78,7 +79,7 @@ function Suggestion() {
   const handleLike = async (suggestionId) => {
     try {
       const visitorId = localStorage.getItem("visitorId");
-      const res = await fetch("/api/suggestions/add-like", {
+      const res = await fetch(`${BACKEND_URL}suggestions/add-like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ suggestionId, visitorId }),
@@ -105,7 +106,7 @@ function Suggestion() {
   const handleDislike = async (suggestionId) => {
     const visitorId = localStorage.getItem("visitorId");
     try {
-      const res = await fetch("/api/suggestions/remove-like", {
+      const res = await fetch(`${BACKEND_URL}suggestions/remove-like`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ suggestionId, visitorId }),

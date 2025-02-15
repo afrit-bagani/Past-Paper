@@ -1,4 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
+import { BACKEND_URL } from "../config";
 
 export const ROOT_FOLDER = {
   folderName: "Root",
@@ -137,7 +138,7 @@ function useFolder(folderId = null, folder = null) {
     }
     (async function () {
       try {
-        const res = await fetch(`/api/folders/${folderId}`, {
+        const res = await fetch(`${BACKEND_URL}/folders/${folderId}`, {
           headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
@@ -161,7 +162,7 @@ function useFolder(folderId = null, folder = null) {
     (async function fetchChildFolders() {
       try {
         isSetFetching(true);
-        const res = await fetch(`/api/folders?parentId=${folderId}`);
+        const res = await fetch(`${BACKEND_URL}/folders?parentId=${folderId}`);
         isSetFetching(false);
         const data = await res.json();
         dispatch({
@@ -179,7 +180,7 @@ function useFolder(folderId = null, folder = null) {
     (async function fetchChildFiles() {
       try {
         isSetFetching(true);
-        const res = await fetch(`/api/files/${folderId}`);
+        const res = await fetch(`${BACKEND_URL}/files/${folderId}`);
         isSetFetching(false);
         const data = await res.json();
         dispatch({

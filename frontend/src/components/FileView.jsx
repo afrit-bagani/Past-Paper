@@ -8,6 +8,7 @@ import { BsFileEarmarkWordFill, BsFiletypeTxt } from "react-icons/bs";
 import { SiGoogledocs, SiJpeg } from "react-icons/si";
 import { BiSolidFileDoc, BiSolidFilePng } from "react-icons/bi";
 import NotificationToast from "./NotificationToast";
+import { BACKEND_URL } from "../config";
 import styles from "../css/FileView.module.css";
 
 function FileView({ childFiles, renameFile, deleteChildFile, viewMode }) {
@@ -56,11 +57,14 @@ function FileView({ childFiles, renameFile, deleteChildFile, viewMode }) {
 
     try {
       setIsFetching(true);
-      const res = await fetch(`/api/files/rename/${currentFile._id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ newFileName: newFileName.trim() }),
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/files/rename/${currentFile._id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ newFileName: newFileName.trim() }),
+        }
+      );
       setIsFetching(false);
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -82,9 +86,12 @@ function FileView({ childFiles, renameFile, deleteChildFile, viewMode }) {
   const handleDeleteSubmit = async () => {
     try {
       setIsFetching(true);
-      const res = await fetch(`/api/files/delete/${currentFile._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/files/delete/${currentFile._id}`,
+        {
+          method: "DELETE",
+        }
+      );
       setIsFetching(false);
       const data = await res.json();
       if (!res.ok || !data.success) {
