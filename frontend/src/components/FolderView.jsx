@@ -65,6 +65,7 @@ function FolderView({
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ newFolderName: newFolderName.trim() }),
+          credentials: "include",
         }
       );
       setIsFetching(false);
@@ -95,6 +96,7 @@ function FolderView({
         `${BACKEND_URL}/folders/delete/${currentFolder._id}`,
         {
           method: "DELETE",
+          credentials: "include",
         }
       );
       const data = await res.json();
