@@ -118,13 +118,13 @@ export const loginUser = async (req, res) => {
       .cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "Strict",
+        sameSite: "none",
         maxAge: 60 * 24 * 60 * 60 * 1000,
       })
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "Strict",
+        sameSite: "none",
         maxAge: 180 * 24 * 60 * 60 * 1000,
       })
       .json({ success: true, message: "You are login" });

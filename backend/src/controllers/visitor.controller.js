@@ -1,4 +1,3 @@
-import { getGeoLocation } from "../helper/getGeoLocation.helper.js";
 import { Visitor } from "../models/visitor.model.js";
 
 // create a new visitor when, someone first time visit the website
@@ -20,8 +19,9 @@ export const createNewVisitor = async (req, res) => {
       .status(201)
       .setHeader("X-Visitor-ID", visitor._id.toString())
       .cookie("visitorId", visitor._id.toString(), {
-        httpOnly: false,
-        secure: false,
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 365,
       })
       .json({
@@ -72,8 +72,10 @@ export const trackSessionTime = async (req, res) => {
     await visitor.save();
     return res.status(200).json({ message: "Session recorded" });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Error tracking session time", error: error.message });
+    return res.status(500).json({
+      success: false,
+      message: "Error tracking session time",
+      error: error.message,
+    });
   }
 };

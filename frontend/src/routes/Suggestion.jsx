@@ -54,7 +54,7 @@ function Suggestion() {
 
     try {
       setIsSubmitting(true);
-      const res = await fetch(`${BACKEND_URL}suggestions`, {
+      const res = await fetch(`${BACKEND_URL}/suggestions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phoneNo, description }),
@@ -79,7 +79,7 @@ function Suggestion() {
   const handleLike = async (suggestionId) => {
     try {
       const visitorId = localStorage.getItem("visitorId");
-      const res = await fetch(`${BACKEND_URL}suggestions/add-like`, {
+      const res = await fetch(`${BACKEND_URL}/suggestions/add-like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ suggestionId, visitorId }),
@@ -106,7 +106,7 @@ function Suggestion() {
   const handleDislike = async (suggestionId) => {
     const visitorId = localStorage.getItem("visitorId");
     try {
-      const res = await fetch(`${BACKEND_URL}suggestions/remove-like`, {
+      const res = await fetch(`${BACKEND_URL}/suggestions/remove-like`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ suggestionId, visitorId }),

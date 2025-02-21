@@ -10,8 +10,8 @@ function TrackSessionTime() {
     const handleUnload = async () => {
       const endTime = Date.now();
       const sessionDuration = Math.floor((endTime - startTime) / 1000);
-
       const visitorId = localStorage.getItem("visitorId");
+
       await fetch(`${BACKEND_URL}/visitor/session-time`, {
         method: "POST",
         headers: {

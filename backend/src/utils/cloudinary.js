@@ -22,6 +22,7 @@ export const uploadOnCloudinary = async (localFilePath) => {
     return uploadResult;
   } catch (error) {
     fs.unlinkSync(localFilePath);
+    console.error("Clodinary upload failed: \n", error.message);
     throw new Error(error.message || "Clodinary upload failed");
   }
 };

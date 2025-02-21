@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaListUl } from "react-icons/fa";
 import { TbLayoutGridFilled } from "react-icons/tb";
 import useFolder from "../hooks/useFolder";
-import AddFolder from "../components/AddFolder";
+import CreateFolder from "../components/CreateFolder";
 import FolderView from "../components/FolderView";
 import FolderBreadcrumbs from "../components/FolderBreadcrumbs";
 import UploadFile from "../components/UploadFile";
@@ -43,7 +43,7 @@ function Home() {
       <TrackVisitor />
       <div className="d-flex align-items-center pt-2 gap-3">
         <FolderBreadcrumbs currentFolder={folder} />
-        <AddFolder currentFolder={folder} addChildFolder={addChildFolder} />
+        <CreateFolder currentFolder={folder} addChildFolder={addChildFolder} />
         <UploadFile currentFolder={folder} addChildFile={addChildFile} />
       </div>
       <div className="d-flex justify-content-end gap-2 mt-2">

@@ -4,7 +4,7 @@ const visitorSchema = new Schema(
   {
     ipHistory: [
       {
-        ip: { type: String, require: true },
+        ip: { type: String, require: true, index: true },
         firstSeen: { type: Date, default: Date.now },
       },
     ],
@@ -30,15 +30,14 @@ const visitorSchema = new Schema(
 
 // Method to add a unique IP
 visitorSchema.methods.addUniqueIp = function (newIp) {
-  const exist = this.ipHistory.some((ipObj) => ipObj.ip === newIp);
-  if (!exist) {
+  if (!this.ipHistory.find((ipObj) => ipObj.ip === newIp)) {
     this.ipHistory.push({ ip: newIp });
   }
 };
 
 // Method to add session data
 visitorSchema.methods.addSession = function (sessionDuration) {
-  if (sessionDuration && sessionDuration > 0) {
+  if (sessionDuration > 0) {
     this.sessions.push({ duration: sessionDuration, timestamp: new Date() });
     this.totalTimeSpentInSec += sessionDuration;
   }

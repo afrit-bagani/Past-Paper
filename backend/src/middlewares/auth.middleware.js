@@ -27,7 +27,7 @@ export const authenticate = async (req, res, next) => {
 };
 
 export const authorize = (permission) => (req, res, next) => {
-  // it has no use just for understanding, which user have which permission
+  // Different user role
   const roles = {
     User: ["read", "upload"],
     Moderator: ["read", "upload", "createFolder", "renameFile", "renameFolder"],
