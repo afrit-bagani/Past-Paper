@@ -16,7 +16,9 @@ function UserList() {
   // fetch all users
   useEffect(() => {
     (async function getAllUsers() {
-      const res = await fetch(`${BACKEND_URL}/users`);
+      const res = await fetch(`${BACKEND_URL}/users`, {
+        credentials: "include",
+      });
       const data = await res.json();
       setUsers(data.users);
     })();
@@ -28,6 +30,7 @@ function UserList() {
       const res = await fetch(`${BACKEND_URL}/users/approve/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -51,6 +54,7 @@ function UserList() {
       const res = await fetch(`${BACKEND_URL}/users/disapprove/${userId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -68,9 +72,12 @@ function UserList() {
     }
   };
 
+  if (!users || users.length === 0) {
+    return <p className="h3 text-center mt-3">No user to show</p>;
+  }
+
   return (
     <div className="container mt-5">
-      <h1 className="text-center text-primary fw-bold mb-4">Users</h1>
       {toastData && (
         <NotificationToast
           message={toastData.message}
@@ -78,6 +85,7 @@ function UserList() {
           onClose={() => setToastData(null)}
         />
       )}
+      <h1 className="text-center text-primary fw-bold mb-4">Users</h1>
       {/* Table Container */}
       <div className="table-responsive">
         <table className="table table-hover shadow-sm rounded overflow-hidden">

@@ -26,6 +26,7 @@ function TrackVisitor() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(visitorData),
+            credentials: "include",
           });
           const data = await res.json();
           localStorage.setItem("visitorId", data.visitorId);

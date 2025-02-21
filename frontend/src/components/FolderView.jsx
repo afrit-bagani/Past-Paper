@@ -52,10 +52,10 @@ function FolderView({
   // when rename button button be click
   const handleRenameSubmit = async () => {
     if (!newFolderName.trim()) {
-      return alert("Folder name can not be empty");
+      return showToast("Folder name can not be empty", "danger");
     }
     if (newFolderName.trim() === currentFolder.folderName) {
-      return alert("Folder name is unchanged");
+      return showToast("Folder name is unchanged", "warning");
     }
     try {
       setIsFetching(true);

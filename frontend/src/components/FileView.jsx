@@ -63,6 +63,7 @@ function FileView({ childFiles, renameFile, deleteChildFile, viewMode }) {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ newFileName: newFileName.trim() }),
+          credentials: "include",
         }
       );
       setIsFetching(false);
@@ -90,6 +91,7 @@ function FileView({ childFiles, renameFile, deleteChildFile, viewMode }) {
         `${BACKEND_URL}/files/delete/${currentFile._id}`,
         {
           method: "DELETE",
+          credentials: "include",
         }
       );
       setIsFetching(false);

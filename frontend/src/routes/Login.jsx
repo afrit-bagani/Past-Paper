@@ -33,6 +33,7 @@ const Login = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
+          credentials: "include",
         });
         setIsLoging(false);
         const data = await res.json();

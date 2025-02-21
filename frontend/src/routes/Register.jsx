@@ -39,7 +39,9 @@ const Register = () => {
         setIsRegistering(false);
         const data = await res.json();
         if (!res.ok || !data.success) {
-          throw new Error(data.message || "Register account request failed");
+          throw new Error(
+            data.error[0].message || "Register account request failed"
+          );
         }
         showToast(data.message, "success");
         setTimeout(() => {
