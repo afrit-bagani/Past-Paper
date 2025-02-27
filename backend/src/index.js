@@ -4,7 +4,7 @@ import { connectDB } from "./db/connection.db.js";
 import { app } from "./app.js";
 
 const PORT = process.env.PORT || 8000;
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000/api";
+const BASE_URL = "https://past-paper-backend.onrender.com";
 
 connectDB()
   .then(() => {
